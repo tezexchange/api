@@ -34,7 +34,7 @@ export const CONTRACTS = {
 
 export const TOKENS = {
   testnet: {
-    KT1JG2pLm5jSuqdVBJKyf6MDVp3fvZgDfRvj: 'TES'
+    TES: 'KT1JG2pLm5jSuqdVBJKyf6MDVp3fvZgDfRvj' 
   },
   mainnet: {
 
