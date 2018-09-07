@@ -12,25 +12,32 @@ export default class Api {
     this.tokens = JSON.parse(JSON.stringify(getTokens()))
   }
 
-  async getRewardInfo(pkh) {
-    const pack_data = { "string": pkh }
-    const pack_type = { "prim": "address" }
+  async getTokenInfo(token_contract, pkh) {
+    const token_amount = pkh ? await this.getBigMapValueByAddress(pkh, token_contract) : undefined
 
-    const bytes = await this.getBytes(pack_data, pack_type)
-    const hash = await this.getHash(bytes)
-    
-    const key = [[0,2], [2,4], [4,6], [6,8], [8,10], [10,undefined]].map(x => hash.slice(x[0], x[1])).join('/')
-    const lock_state = await this.getBigMapValueByKey(key, 'reward')
+    const contract_storage_url = `/context/contracts/${token_contract}/storage`
+    const storage = await this.getHeadCustom(contract_storage_url)
+
+    const plain = makePlain(storage)
+    return {
+      token_amount: token_amount ? token_amount.int : token_amount,
+      symbol: plain[0],
+      name: plain[1],
+      decimal: plain[2],
+      total_amount: plain[3]
+    }
+  }
+
+  async getRewardInfo(pkh) {
+    const lock_state = await this.getBigMapValueByAddress(pkh, getContract('reward', this.version))
 
     const contract_storage_url = `/context/contracts/${getContract('reward', this.version)}/storage`
     const storage = await this.getHeadCustom(contract_storage_url)
 
-    const lock_state_plain = makePlain(lock_state)
+    const lock_state_plain = lock_state ? makePlain(lock_state) : [undefined, undefined]
     return {
-      lockState: {
-        locked_amount: lock_state_plain[0],
-        last_withdraw_date: getDate(lock_state_plain[1])
-      },
+      locked_amount: lock_state_plain[0],
+      lock_date: getDate(lock_state_plain[1]),
       rewards: storage.args[1].args[0].map(x => {
         const plain = makePlain(x)
         return {
@@ -73,17 +80,32 @@ export default class Api {
     })[this.client_name].call(this)
   }
 
-  getBigMapValueByKey(key, contract_name) {
+  async getBigMapValueByAddress(pkh, contract) {
+    try {
+      const pack_data = { "string": pkh }
+      const pack_type = { "prim": "address" }
+
+      const bytes = await this.getBytes(pack_data, pack_type)
+      const hash = await this.getHash(bytes)
+      
+      const key = [[0,2], [2,4], [4,6], [6,8], [8,10], [10,undefined]].map(x => hash.slice(x[0], x[1])).join('/')
+      return await this.getBigMapValueByKey(key, contract)
+    } catch(err) {
+      return undefined
+    }
+  }
+
+  getBigMapValueByKey(key, contract) {
     return ({
       tzclient() {
-        return this.client.big_map_with_key(key, getContract(contract_name, this.version))
+        return this.client.big_map_with_key(key, contract)
       },
 
       tezbridge() {
         return this.client({
           method: 'big_map_with_key', 
           key, 
-          contract: getContract(contract_name, this.version)
+          contract: contract 
         })
       }
     })[this.client_name].call(this)

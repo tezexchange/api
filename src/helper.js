@@ -62,5 +62,8 @@ export function makePlain(json) {
 }
 
 export function getDate(x) {
-  return new Date(isNaN(x * 1000) ? x : x * 1000)
+  if (x)
+    return new Date(isNaN(x * 1000) ? x : x * 1000)
+  else
+    return x
 }
