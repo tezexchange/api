@@ -1,4 +1,4 @@
-import parameters from './parameters'
+import Args from './args'
 import { CONTRACTS, getTokens, getContract } from './contracts'
 import { enc58, makePlain, getDate } from './helper'
 
@@ -179,28 +179,28 @@ export default class Api {
   }
 
   rewardWithDraw() {
-    const parameters = parameters.rewardWithDraw(this.version)
+    const parameters = Args.rewardWithDraw(this.version)
     const destination = getContract('token', this.version)
 
     return this.basicTransfer(destination, parameters)
   }
 
   rewardUnlock() {
-    const parameters = parameters.rewardUnlock(this.version)
+    const parameters = Args.rewardUnlock(this.version)
     const destination = getContract('token', this.version)
 
     return this.basicTransfer(destination, parameters)
   }
 
   rewardLock(token_amount) {
-    const parameters = parameters.rewardLock(token_amount, this.version)
+    const parameters = Args.rewardLock(token_amount, this.version)
     const destination = getContract('token', this.version)
 
     return this.basicTransfer(destination, parameters)
   }
 
   executeSelling(token_addr, price, owner, xtz_amount) {
-    const parameters = parameters.executeSelling(token_addr, price, owner)
+    const parameters = Args.executeSelling(token_addr, price, owner)
     const destination = getContract('main', this.version)
 
     return this.basicTransfer(destination, parameters, xtz_amount)
@@ -212,7 +212,7 @@ export default class Api {
 
     const bytes = await this.getBytes(pack_data, pack_type)
 
-    const parameters = parameters.executeBuying(owner, token_amount, bytes, this.version)
+    const parameters = Args.executeBuying(owner, token_amount, bytes, this.version)
     const destination = token_addr
 
     return this.basicTransfer(destination, parameters)
@@ -224,21 +224,21 @@ export default class Api {
 
     const bytes = await this.getBytes(pack_data, pack_type)
 
-    const parameters = parameters.createSelling(token_amount, bytes, this.version)
+    const parameters = Args.createSelling(token_amount, bytes, this.version)
     const destination = token_addr
 
     return this.basicTransfer(destination, parameters)
   }
 
   createBuying(token_addr, price, xtz_amount) {
-    const parameters = parameters.createBuying(token_addr, price)
+    const parameters = Args.createBuying(token_addr, price)
     const destination = getContract('main', this.version)
 
     return this.basicTransfer(destination, parameters, xtz_amount)
   }
 
   cancelOrder(token_addr, is_buy, price) {
-    const parameters = parameters.cancelOrder(token_addr, is_buy, price) 
+    const parameters = Args.cancelOrder(token_addr, is_buy, price) 
     const destination = getContract('main', this.version)
 
     return this.basicTransfer(destination, parameters)
