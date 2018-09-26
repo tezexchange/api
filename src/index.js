@@ -178,6 +178,13 @@ export default class Api {
     })[this.client_name].call(this)
   }
 
+  tokenTransfer(token_addr, receiver, token_amount) {
+    const parameters = Args.tokenTransfer(receiver, token_amount)
+    const destination = token_addr
+
+    return this.basicTransfer(destination, parameters)
+  }
+
   rewardWithDraw() {
     const parameters = Args.rewardWithDraw(this.version)
     const destination = getContract('token', this.version)

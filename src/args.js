@@ -1,6 +1,39 @@
 import { getContract } from './contracts.js'
 
 export default {
+  tokenTransfer(receiver, token_amount) {
+    return {
+            "prim": "Right",
+            "args": [
+              {
+                "prim": "Left",
+                "args": [
+                  {
+                    "prim": "Pair",
+                    "args": [
+                      {
+                        "string": receiver
+                      },
+                      {
+                        "prim": "Pair",
+                        "args": [
+                          {
+                            "int": token_amount + ''
+                          },
+                          {
+                            "prim": "None",
+                            "args": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+  },
+
   rewardWithDraw(version) {
     return {
               "prim": "Right",
@@ -153,7 +186,7 @@ export default {
                           "prim": "Pair",
                           "args": [
                             {
-                              "int": price
+                              "int": price + ''
                             },
                             {
                               "prim": "Pair",
