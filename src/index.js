@@ -185,8 +185,8 @@ export default class Api {
     return this.basicTransfer(destination, parameters)
   }
 
-  rewardWithDraw() {
-    const parameters = Args.rewardWithDraw(this.version)
+  rewardWithdraw() {
+    const parameters = Args.rewardWithdraw(this.version)
     const destination = getContract('token', this.version)
 
     return this.basicTransfer(destination, parameters)

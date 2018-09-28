@@ -34,7 +34,7 @@ export default {
           }
   },
 
-  rewardWithDraw(version) {
+  rewardWithdraw(version) {
     return {
               "prim": "Right",
               "args": [

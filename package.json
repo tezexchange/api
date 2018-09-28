@@ -1,11 +1,11 @@
 {
   "name": "tezexchange-api",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "dev": "parcel watch src/index.js",
-    "build": "rm -rf dist && parcel build src/index.js"
+    "build": "rm -rf dist && rm -rf .cache && parcel build src/index.js"
   },
   "repository": {
     "type": "git",
