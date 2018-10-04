@@ -1,6 +1,13 @@
 export const CONTRACTS = {
-  selected: "testnet#4",
+  selected: "alphanet#1",
   versions: {
+    "alphanet#1": {
+      "ADMIN": "tz1iQ3xATBoSkFdzfDWyfkSycucqKn45BAWp",
+      "CONTRACT.token": "KT19fNk76zo1BanJGeFPSXpSL7BuY3YqTxpy",
+      "CONTRACT.reward": "KT1TTXrCkz5soiDBzyii69cunFSPRwsa7LQd",
+      "CONTRACT.main": "KT1L5qmtbMeeMAXt3Q8ZyUeg998kQJJUYMuH",
+      "CONTRACT.adapter": "KT1LwMyjw3QuGGf8Bs1vz9Cjh63J9NfpV5se"
+    },
     "testnet#1": {
       "ADMIN": "tz1e8FzYbvNdaHijnBTfZMAHHugKP5eKDhgu",
       "CONTRACT.token": "KT1UHQoA3tt6wH3aEjYkgM2LSFoqBEBMjcAR",
