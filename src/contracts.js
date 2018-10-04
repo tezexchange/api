@@ -2,11 +2,11 @@ export const CONTRACTS = {
   selected: "alphanet#1",
   versions: {
     "alphanet#1": {
-      "ADMIN": "tz1iQ3xATBoSkFdzfDWyfkSycucqKn45BAWp",
-      "CONTRACT.token": "KT19fNk76zo1BanJGeFPSXpSL7BuY3YqTxpy",
-      "CONTRACT.reward": "KT1TTXrCkz5soiDBzyii69cunFSPRwsa7LQd",
-      "CONTRACT.main": "KT1L5qmtbMeeMAXt3Q8ZyUeg998kQJJUYMuH",
-      "CONTRACT.adapter": "KT1LwMyjw3QuGGf8Bs1vz9Cjh63J9NfpV5se"
+      "ADMIN": "tz1fBJf5HAcfTCaRmHCPfcQZiR9TayJf7XsE",
+      "CONTRACT.token": "KT1QsMSGuLG3HL8YZjHJqXTpL8v8yNkvfSvn",
+      "CONTRACT.reward": "KT1MVjKAyEUozrwDVratszVvTGZC6eAiozES",
+      "CONTRACT.main": "KT1EKGRmfwaMEsqyopxj1NSRvqhq8kVqVdoA",
+      "CONTRACT.adapter": "KT1Lh4RR3Y2sVLJu9uKCJHmjrRbqqLNMmKR5"
     },
     "testnet#1": {
       "ADMIN": "tz1e8FzYbvNdaHijnBTfZMAHHugKP5eKDhgu",
@@ -41,7 +41,7 @@ export const CONTRACTS = {
 
 export const TOKENS = {
   alphanet: {
-    TES: 'KT19fNk76zo1BanJGeFPSXpSL7BuY3YqTxpy'
+    TES: 'KT1QsMSGuLG3HL8YZjHJqXTpL8v8yNkvfSvn'
   },
   testnet: {
     TES: 'KT1JG2pLm5jSuqdVBJKyf6MDVp3fvZgDfRvj' 
