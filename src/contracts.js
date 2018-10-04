@@ -40,6 +40,9 @@ export const CONTRACTS = {
 }
 
 export const TOKENS = {
+  alphanet: {
+    TES: 'KT19fNk76zo1BanJGeFPSXpSL7BuY3YqTxpy'
+  },
   testnet: {
     TES: 'KT1JG2pLm5jSuqdVBJKyf6MDVp3fvZgDfRvj' 
   },
@@ -53,5 +56,6 @@ export function getContract(name, version) {
 }
 
 export function getTokens() {
-  return TOKENS[CONTRACTS.selected.slice(0, 7)]
+  const net_type = CONTRACTS.selected.split('#')[0]
+  return TOKENS[net_type]
 }
