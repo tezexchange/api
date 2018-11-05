@@ -265,7 +265,7 @@ export default {
                       "prim": "Pair",
                       "args": [
                         {
-                          "string": getContract('main', version)
+                          "string": getContract('order', version)
                         },
                         {
                           "prim": "Pair",
@@ -364,17 +364,3 @@ export default {
             }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

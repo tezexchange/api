@@ -49,7 +49,7 @@ export default class Api {
   }
 
   async getOrders() {
-    const { big_map, storage } = await this.getStorage('main')
+    const { big_map, storage } = await this.getStorage('order')
     const order_lst = Object.values(big_map).map(x => {
       const result = makePlain(x)
       return {
@@ -208,7 +208,7 @@ export default class Api {
 
   executeSelling(token_addr, price, owner, xtz_amount) {
     const parameters = Args.executeSelling(token_addr, price, owner)
-    const destination = getContract('main', this.version)
+    const destination = getContract('order', this.version)
 
     return this.basicTransfer(destination, parameters, xtz_amount)
   }
@@ -239,14 +239,14 @@ export default class Api {
 
   createBuying(token_addr, price, xtz_amount) {
     const parameters = Args.createBuying(token_addr, price)
-    const destination = getContract('main', this.version)
+    const destination = getContract('order', this.version)
 
     return this.basicTransfer(destination, parameters, xtz_amount)
   }
 
   cancelOrder(token_addr, is_buy, price) {
     const parameters = Args.cancelOrder(token_addr, is_buy, price) 
-    const destination = getContract('main', this.version)
+    const destination = getContract('order', this.version)
 
     return this.basicTransfer(destination, parameters)
   }
