@@ -1,6 +1,13 @@
 export const CONTRACTS = {
-  selected: "alphanet#1",
+  selected: "alphanet#2",
   versions: {
+    "alphanet#2": {
+      "ADMIN": "tz1gRaTpXdZPEdcoG85gG9EuUYNeRKuTUoz4",
+      "CONTRACT.token": "KT19eP5E3HyJaNWFFpsXPaYx9BmJDxLULCXd",
+      "CONTRACT.reward": "KT1NuavwJ1QRiSzcCsWJ99tRYifWNQGRMHdT",
+      "CONTRACT.order": "KT1Ap4UZRBGGo9Pm92sFbR8gJrrFTfUbX4kc",
+      "CONTRACT.adapter": "KT196TdWjorB4PGyphnkTb3DW2sDwVJu4Js4"
+    },
     "alphanet#1": {
       "ADMIN": "tz1fBJf5HAcfTCaRmHCPfcQZiR9TayJf7XsE",
       "CONTRACT.token": "KT1QsMSGuLG3HL8YZjHJqXTpL8v8yNkvfSvn",
@@ -41,7 +48,7 @@ export const CONTRACTS = {
 
 export const TOKENS = {
   alphanet: {
-    TES: 'KT1QsMSGuLG3HL8YZjHJqXTpL8v8yNkvfSvn'
+    TES: 'KT19eP5E3HyJaNWFFpsXPaYx9BmJDxLULCXd'
   },
   testnet: {
     TES: 'KT1JG2pLm5jSuqdVBJKyf6MDVp3fvZgDfRvj' 
